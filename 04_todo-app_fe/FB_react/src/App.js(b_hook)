@@ -1,0 +1,105 @@
+import React, { Component } from "react";
+
+
+export default class App extends Component {
+
+  // 할 일 목록 데이터 
+  state = {
+    todoData: [
+      { id: "1", title: "공부하기", completed: true },
+      { id: "2", title: "청소하기", completed: false },
+    ],
+    value: "",
+  };
+
+  // 할일 - 한줄 박스의 스타일 정의
+  listStyle = (completed) => {
+    return {
+      padding: "10px",
+      borderBottom: "1px dotted #ccc",
+      textDecoration: completed ? "line-through" : "none", 
+    }
+  };
+
+  
+  // X버튼의 스타일 정의
+  btnStyle = {
+    backgroundColor: "PeachPuff",
+    color: "#fff",
+    border: "none",
+    padding: "0px 6px 2px 6px",
+    borderRadius: "50px",
+    cursor: "pointer",
+    marginLeft: "8px",
+    float: "right",
+  };
+
+  // x버튼 클릭 시 목록 삭제 (키 이름 todoData로 통일)
+  handleClick = (id) => {
+    const newTodoData = this.state.todoData.filter((data) => data.id !== id);
+    this.setState({ todoData: newTodoData });
+  };
+
+
+  handleChange = (e) => {
+    this.setState({ value: e.target.value });
+  };
+
+  handleSubmit = (e) => {
+    // form 안에 input을 전송할 때 페이지 리로드 되는 걸 막아줌
+    e.preventDefault();
+    // 새로운 할 일 데이터
+    let newTodo = {
+      id: String(Date.new()), title: this.state.value, completed: false,
+    };
+    //원래 있던 할 일에 새로운 할 일 더해주기
+    this.setState((prev) => ({
+      todoData: [...this.state.todoData, newTodo], value: "",
+    }));
+  };
+
+  // 체크박스 클릭시, 완료상태 바꾸기
+  handleCompleteChange = (id) => {
+    let newTodoData = this.state.todoData.map((data) => {
+      if (data.id === id) {
+        data.completed = !data.completed;
+      }
+      return data;
+    });
+    this.setState({ todoData: newTodoData });
+  };
+
+  // 화면 표시 시작
+  render() {
+    const { todoData } = this.state; // 할일목록 오류시, 안정장치
+
+    return (
+      <div className="container">
+        <div className="todoBlock">
+          <div className="title">
+            <h1>할 일 목록</h1>
+          </div>
+
+          {/* 새 할 일 입력 폼 */}
+          <form style={{ display: 'flex' }}>
+            <input type="text" value={this.state.value} name="value"
+              style={{ flex: '10', padding: '5px' }} placeholder="해야 할 일을 입력하세요." value="" />
+            <input type="submit" value="입력" classNmae="btn" style={{ flex: '1'}} />
+          </form>
+
+          {/* 할 일 리스트 표시 */}
+          {this.state.todoData.map((data) => ( 
+            <div key={data.id} style={this.listStyle(data.completed)}>
+              <input type="checkbox" defaultChecked={this.false} checked={data.completed}
+                onChange={() => this.handleCompleteChange(data.id)} />
+              {" "}{data.title}
+              <button style={this.btnStyle} onClick={() => this.handleClick(data.id)}>x</button>
+          </div>
+          ))}
+          
+        </div>
+      </div>
+    );
+  }
+}
+

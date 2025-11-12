@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 1. html과 body의 높이를 화면 전체로 확장 */
+html, body {
+  height: 100%;
+  margin: 0; /* body의 기본 마진 제거 */
+}
+
+/* 2. 루트 요소에도 높이를 설정하고 배경색을 적용 */
+#root { /* 또는 사용하는 루트 요소 ID/클래스 */
+  height: 100%;
+  /* 여기에 배경색 또는 그라데이션 적용 */
+  background-color: aliceblue; 
+  /* background-image: linear-gradient(red, blue); */ 
+}

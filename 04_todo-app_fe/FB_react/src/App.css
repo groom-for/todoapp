@@ -1,0 +1,30 @@
+.container {
+  margin: auto;
+  max-width: 600px;
+}
+
+.todoBlaock {
+  padding: 30px;
+  margin-top: 50px;
+  background: #fff;
+  border-radius: 10px;
+  box-shodow: -9px 17px 13px rgb(0 0 0 / 15%);
+}
+
+
+.noto-sans-kr-<uniquifier> {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.btnStyle {
+  color: #fff;
+  border: none;
+  padding: 5px 9px;
+  borderRadius: 50px;
+  cursor: pointer;
+  flast: right;
+} 
+
