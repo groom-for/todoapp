@@ -53,11 +53,12 @@ function List({ data, index, todoData, setTodoData }) {
     return (
       <div className="w-full mb-4">
         <form onSubmit={handleSubmit} style={{ display: "flex" }}>
+          <div className="w-full py-2">
           {/* 수정 입력창 */}
           <input
             type="text"
             onChange={handleEditChange}
-            className="px-3 py-2 mr-4 text-gray-500 border rounded shadow"
+            className="px-3 py-2 mr-4 text-gray-500 border rounded shadow w-4/5"
             value={editedTitle}
             autoFocus
           />
@@ -79,6 +80,7 @@ function List({ data, index, todoData, setTodoData }) {
           >
             x
           </button>
+          </div>
         </form>
       </div>
     );
