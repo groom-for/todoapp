@@ -8,14 +8,14 @@
   margin-top: 50px;
   background: #fff;
   border-radius: 10px;
-  box-shodow: -9px 17px 13px rgb(0 0 0 / 15%);
+  box-shadow: -9px 17px 13px rgb(0 0 0 / 15%);
 }
 
 
-.noto-sans-kr-<uniquifier> {
+.noto-sans-kr-regular  {
   font-family: "Noto Sans KR", sans-serif;
   font-optical-sizing: auto;
-  font-weight: <weight>;
+  font-weight: 600;
   font-style: normal;
 }
 
